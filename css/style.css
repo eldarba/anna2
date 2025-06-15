@@ -15,7 +15,7 @@ html,body{
 }
 
 textarea{
-    width: 45%;
+    width: 98%;
     height: 10vh;
     direction: auto;
     unicode-bidi: plaintext;
@@ -47,9 +47,6 @@ textarea.healthy{
     color: red;
 }
 
-label.mid{
-    display: inline-block;
-    width: 45%;
-    margin-right: 10px;
-    text-align: center;
+label{
+    font-size: medium;
 }
