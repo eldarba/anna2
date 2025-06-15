@@ -1,0 +1,46 @@
+html,body{
+    font-family: sans-serif;
+}
+
+
+.row{
+    border: 1px solid;
+    width: 100%;
+    background-color: palegoldenrod;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+textarea{
+    width: 45%;
+    height: 10vh;
+    direction: auto;
+    unicode-bidi: plaintext;
+    font-family: sans-serif;
+}
+
+textarea.healthy{
+    background-color: green;
+    color: white;
+}
+
+.unhealthy:enabled{
+    background-color: red;
+}
+
+.child{
+    background-color: blue;
+    color: white;
+}
+
+#copingMechanismOptionDelete{
+    color: red;
+}
+
+label.mid{
+    display: inline-block;
+    width: 45%;
+    margin-right: 10px;
+    text-align: center;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" src="./js/main.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="event-container">
+            <div class="row" id="row1">
+                <label class="mid" for="situation">Situation</label>
+                <label class="mid" for="healthyAdultOnSituation">Healthy Adult</label>
+                <br>
+                <textarea id="situation"></textarea>
+                <textarea id="healthyAdultOnSituation" class="healthy"></textarea>
+            </div>
+            <div class="row" id="row2">
+                <label class="mid" for="punitiveAdult">Punitive Adult</label>
+                <br>
+                <textarea id="punitiveAdult" class="unhealthy"></textarea>
+                <textarea id="healthyAdultOnPunitiveAdult" class="healthy"></textarea>
+            </div>
+            <div class="row" id="row3">
+                <label class="mid" for="vulnerableChild">Vulnerable Child</label>
+                <br>
+                <textarea id="vulnerableChild" class="child"></textarea>
+                <textarea id="healthyAdultOnVulnerableChild" class="healthy"></textarea>
+            </div>
+            <div class="row" id="row4">
+                <label for="copingMechanism">Coping Mechanism</label>
+                <div class="row">
+
+                    <select id="copingMechanismsSelect">
+                        <option value="">-- None --</option>
+                    </select>
+                    <input id="copingMechanismOptionInsert" type="text" placeholder="New Coping Mechanism">
+                    <button id="copingMechanismOptionDelete">delete current mechanism</button>
+                </div>
+                <textarea id="copingMechanism" disabled class="unhealthy"></textarea>
+                <textarea id="healthyAdultOnCopingMechanism" class="healthy"></textarea>
+            </div>
+        </div>
+    </div>
+    <button id="btSaveState">Save State</button>
+    <button id="btClearState">Clear State</button>
+</body>
+
+</html>
