@@ -75,6 +75,12 @@ copingMechanismOptionInsert.addEventListener("keydown", (event) => {
         event.preventDefault(); // prevent accidental form submit behavior if any
         const inputValue = copingMechanismOptionInsert.value.trim();
         if (inputValue) {
+            const values = Array.from(copingMechanismsSelect.options).map(option => option.value);
+            const exists = values.some(val => val === inputValue);
+            if (exists) {
+                alert("This Coping mechanism already exists!");
+                return;
+            }
             const newOption = document.createElement("option");
             newOption.text = inputValue;
             newOption.value = inputValue;
