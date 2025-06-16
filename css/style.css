@@ -82,3 +82,9 @@ label {
     display: inline-block;
     width: 100%;
 }
+
+.full-width{
+    width: 100%;
+    padding: 0;
+    border: 0.8px;
+}
