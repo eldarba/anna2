@@ -118,16 +118,16 @@ copingMechanismsSelect.addEventListener('change', function () {
         txt = txt ? txt : "";
         copingMechanism.value = txt;
         // set what is displayed in the punitive adult card
-        txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].punitiveAdult;
-        txt = txt ? txt : "";
-        punitiveAdult.value = txt;
+        // txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].punitiveAdult;
+        // txt = txt ? txt : "";
+        // punitiveAdult.value = txt;
         copingMechanism.disabled = false;
     } else {
         // set what is displayed in the mechanism voice
         copingMechanism.value = "";
         // set what is displayed in the punitive adult card
-        let txt = appState.currentEvent.punitiveAdult;
-        punitiveAdult.value = txt ? txt : "";
+        // let txt = appState.currentEvent.punitiveAdult;
+        // punitiveAdult.value = txt ? txt : "";
         copingMechanism.disabled = true;
     }
 });
