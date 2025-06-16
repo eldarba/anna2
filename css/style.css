@@ -42,19 +42,6 @@ textarea {
     border-radius: 5px;
 }
 
-textarea,
-select,
-input,
-button {
-    /* font-size: inherit; */
-    /* font-weight: inherit; */
-
-}
-
-
-/* #healthyAdultOnCopingMechanism {
-    width: 90%;
-} */
 
 textarea.healthy {
     border: 5px solid;
