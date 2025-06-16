@@ -92,5 +92,5 @@ textarea.healthy {
 label {
     font-size: medium;
     display: inline-block;
-    /* width: 48%; */
+    width: 100%;
 }
