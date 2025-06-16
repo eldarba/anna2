@@ -143,6 +143,7 @@ function clearState() {
         healthyAdultOnPunitiveAdult, healthyAdultOnVulnerableChild, healthyAdultOnCopingMechanism
     ]
     arr.forEach(e => e.value = '');
+    copingMechanismsSelect.innerHTML = '<option value="">-- None --</option>';
 
 }
 
