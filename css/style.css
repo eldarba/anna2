@@ -1,7 +1,6 @@
 html,
 body {
     font-family: sans-serif;
-    /* font-size: medium; */
     font-weight: bold;
     background-color: black;
 }
@@ -16,7 +15,7 @@ body {
     border: 1px solid;
     width: 100%;
     background-color: palegoldenrod;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 5px;
     margin-bottom: 7px;
 
@@ -39,6 +38,7 @@ textarea {
     font-family: sans-serif;
     border: 5px solid;
     box-sizing: border-box;
+    border-radius: 5px;
 }
 
 textarea,
@@ -92,5 +92,5 @@ textarea.healthy {
 label {
     font-size: medium;
     display: inline-block;
-    width: 48%;
+    /* width: 48%; */
 }
