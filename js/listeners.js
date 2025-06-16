@@ -36,13 +36,13 @@ punitiveAdult.addEventListener("input", function () {
     saveState();
 });
 
-punitiveAdult.addEventListener('mousedown', function () {
-    // check inside mousedown whether the textarea was already active:
-    if (document.activeElement === this) {
-        copingMechanismsSelect.selectedIndex = (copingMechanismsSelect.selectedIndex + 1) % copingMechanismsSelect.length;
-        copingMechanismsSelect.dispatchEvent(new Event('change'));
-    }
-});
+// punitiveAdult.addEventListener('mousedown', function () {
+//     // check inside mousedown whether the textarea was already active:
+//     if (document.activeElement === this) {
+//         copingMechanismsSelect.selectedIndex = (copingMechanismsSelect.selectedIndex + 1) % copingMechanismsSelect.length;
+//         copingMechanismsSelect.dispatchEvent(new Event('change'));
+//     }
+// });
 
 healthyAdultOnPunitiveAdult.addEventListener("input", function () {
     appState.currentEvent.healthyAdultOnPunitiveAdult = this.value;
