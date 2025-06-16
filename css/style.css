@@ -1,12 +1,20 @@
-html,body{
+html,
+body {
     font-family: sans-serif;
     font-size: large;
     font-weight: bold;
     background-color: black;
+    /* margin: 0; */
+    /* padding: 5px; */
+}
+
+#container {
+    width: 98%;
+    margin: auto;
 }
 
 
-.row{
+.row {
     border: 1px solid;
     width: 100%;
     background-color: palegoldenrod;
@@ -15,39 +23,76 @@ html,body{
     margin-bottom: 7px;
 }
 
-textarea{
-    width: 98%;
+#row4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+textarea {
+    width: 45%;
     height: 10vh;
     direction: auto;
     unicode-bidi: plaintext;
     font-family: sans-serif;
+    border: 5px solid;
+    box-sizing: border-box;
 }
 
-textarea, select, input, button{
+textarea,
+select,
+input,
+button {
     font-size: inherit;
     font-weight: inherit;
 
 }
 
-textarea.healthy{
-    background-color: green;
-    color: white;
+.col {
+    width: 100%;
+    flex-shrink: 1;
 }
 
-.unhealthy:enabled{
-    background-color: red;
-    color: white;
+#healthyAdultOnCopingMechanism {
+    width: 90%;
 }
 
-.child{
-    background-color: blue;
-    color: white;
+textarea.healthy {
+    border: 5px solid;
+    box-sizing: border-box;
+    border-color: green;
 }
 
-#copingMechanismOptionDelete{
+.green-lbl {
+    color: green;
+}
+
+.red-lbl {
     color: red;
 }
 
-label{
+.blue-lbl {
+    color: blue;
+}
+
+.unhealthy:enabled {
+    border: 5px solid;
+    box-sizing: border-box;
+    border-color: red;
+}
+
+.child {
+    border: 5px solid;
+    box-sizing: border-box;
+    border-color: blue;
+}
+
+#copingMechanismOptionDelete {
+    color: red;
+}
+
+label {
     font-size: medium;
+    display: inline-block;
+    width: 48%;
 }

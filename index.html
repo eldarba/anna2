@@ -10,49 +10,48 @@
 </head>
 
 <body>
-    <div class="container">
+    <div id="container">
         <div id="event-container">
             <div class="row" id="row1">
+                <label class="green-lbl" for="healthyAdultOnSituation">Healthy Adult</label>
                 <label for="situation">Situation</label>
                 <br>
-                <textarea id="situation"></textarea>
-                <br>
-                <label for="healthyAdultOnSituation">Healthy Adult</label>
-                <br>
                 <textarea id="healthyAdultOnSituation" class="healthy"></textarea>
+                <textarea id="situation"></textarea>
             </div>
             <div class="row" id="row2">
-                <label for="punitiveAdult">Punitive Adult</label>
-                <br>
-                <textarea id="punitiveAdult" class="unhealthy"></textarea>
-                <br>
-                <label for="healthyAdultOnPunitiveAdult">Healthy Adult</label>
+                <label class="green-lbl" for="healthyAdultOnPunitiveAdult">Healthy Adult</label>
+                <label class="red-lbl" for="punitiveAdult">Punitive Adult</label>
                 <br>
                 <textarea id="healthyAdultOnPunitiveAdult" class="healthy"></textarea>
+                <textarea id="punitiveAdult" class="unhealthy"></textarea>
             </div>
             <div class="row" id="row3">
-                <label for="vulnerableChild">Vulnerable Child</label>
-                <br>
-                <textarea id="vulnerableChild" class="child"></textarea>
-                <br>
-                <label for="healthyAdultOnVulnerableChild">Healthy Adult</label>
+                <label class="green-lbl" for="healthyAdultOnVulnerableChild">Healthy Adult</label>
+                <label class="blue-lbl" for="vulnerableChild">Vulnerable Child</label>
                 <br>
                 <textarea id="healthyAdultOnVulnerableChild" class="healthy"></textarea>
+                <textarea id="vulnerableChild" class="child"></textarea>
             </div>
             <div class="row" id="row4">
-                <label for="copingMechanism">Coping Mechanism</label>
-                <div class="row">
+                <div class="col">
+                    <label class="green-lbl" for="healthyAdultOnCopingMechanism">Healthy Adult</label>
+                    <br>
+                    <textarea id="healthyAdultOnCopingMechanism" class="healthy"></textarea>
+                </div>
+                <div class="col">
+                    <label for="copingMechanism">Coping Mechanism</label>
+                    <br>
                     <select id="copingMechanismsSelect">
                         <option value="">-- None --</option>
                     </select>
                     <input id="copingMechanismOptionInsert" type="text" placeholder="New Coping Mechanism">
                     <button id="copingMechanismOptionDelete">delete current mechanism</button>
+                    <br>
+                    <textarea id="copingMechanism" disabled class="unhealthy"></textarea>
+
                 </div>
-                <textarea id="copingMechanism" disabled class="unhealthy"></textarea>
-                <br>
-                <label for="healthyAdultOnCopingMechanism">Healthy Adult</label>
-                <br>
-                <textarea id="healthyAdultOnCopingMechanism" class="healthy"></textarea>
+
             </div>
         </div>
     </div>
