@@ -164,7 +164,12 @@ clearEventBT.addEventListener('click', function () {
 });
 
 archiveEventBT.addEventListener('click', function () {
-    appState.currentEvent.title = prompt("Enter Event Title");
+    const eventTitle = prompt("Enter Event Title");
+    if(!eventTitle){
+        alert("You need to enter a title!");
+        return;
+    }
+    appState.currentEvent.title = eventTitle;
     // add the current event to the events array in app
     appState.archivedEvents.push(appState.currentEvent);
     // clear the current event
@@ -180,8 +185,6 @@ archiveEventBT.addEventListener('click', function () {
 
 
 
-function showSituationDetails(sit) { }
-function deleteSituation(sit) { }
 
 // ON PAGE LOAD
 window.addEventListener("load", () => {
