@@ -1,39 +1,67 @@
+// All DOM event listeners (input, click, etc.)
+
 import appState from "./models/AppState.js";
 import { CopingMechanism } from "./logic/AppLogic.js";
+import * as localStore from "./storage/localStore.js";
+import * as updateUI from "./ui/updateUI.js";
+import * as renderEvent from "./ui/renderEvent.js"
+// import { Event as AppEvent } from "./logic/AppLogic.js";
 
+// DOM ELEMENTS =============================
+// row 1
+export const healthyAdultOnSituationBox = document.getElementById('healthyAdultOnSituationBox');
 /** @type {HTMLElement } */
-export const situation = document.getElementById('situation');
-const healthyAdultOnSituation = document.getElementById('healthyAdultOnSituation');
+export const situationBox = document.getElementById('situationBox');
 
-const punitiveAdult = document.getElementById('punitiveAdult');
-const healthyAdultOnPunitiveAdult = document.getElementById('healthyAdultOnPunitiveAdult');
+// row 2
+export const healthyAdultOnPunitiveAdultBox = document.getElementById('healthyAdultOnPunitiveAdultBox');
+export const punitiveAdultBox = document.getElementById('punitiveAdultBox');
 
-const vulnerableChild = document.getElementById('vulnerableChild');
-const healthyAdultOnVulnerableChild = document.getElementById('healthyAdultOnVulnerableChild');
+// row 3
+export const healthyAdultOnVulnerableChildBox = document.getElementById('healthyAdultOnVulnerableChildBox');
+export const vulnerableChildBox = document.getElementById('vulnerableChildBox');
 
-const copingMechanismsSelect = document.getElementById('copingMechanismsSelect');
-const copingMechanismOptionInsert = document.getElementById('copingMechanismOptionInsert');
-const copingMechanismOptionDelete = document.getElementById("copingMechanismOptionDelete");
-const copingMechanism = document.getElementById('copingMechanism');
-const healthyAdultOnCopingMechanism = document.getElementById('healthyAdultOnCopingMechanism');
+// row 4
+export const healthyAdultOnCopingMechanismBox = document.getElementById('healthyAdultOnCopingMechanismBox');
+export const copingMechanismBox = document.getElementById('copingMechanismBox');
 
-situation.addEventListener("input", function () {
-    appState.currentEvent.situation = this.value;
-    saveState();
-});
+// row 5
+export const copingMechanismsSelect = document.getElementById('copingMechanismsSelect');
+export const newCopingMechanismBox = document.getElementById('newCopingMechanismBox');
+const copingMechanismDeleteBT = document.getElementById("copingMechanismDeleteBT");
 
-healthyAdultOnSituation.addEventListener("input", function () {
+const clearEventBT = document.getElementById('clearEventBT');
+const archiveEventBT = document.getElementById('archiveEventBT');
+
+export const tbodyArchivedEvents = document.getElementById('tbodyArchivedEvents');
+
+
+
+// REGISTRATIONS ===================================
+// row 1 ===========================
+healthyAdultOnSituationBox.addEventListener("input", function () {
     appState.currentEvent.healthyAdultOnSituation = this.value;
-    saveState();
+    localStore.saveCurrentEventToLocalStorage();
 });
 
-punitiveAdult.addEventListener("input", function () {
+situationBox.addEventListener("input", function () {
+    appState.currentEvent.situation = this.value;
+    localStore.saveCurrentEventToLocalStorage();
+});
+
+// row 2 ===========================
+healthyAdultOnPunitiveAdultBox.addEventListener("input", function () {
+    appState.currentEvent.healthyAdultOnPunitiveAdult = this.value;
+    localStore.saveCurrentEventToLocalStorage();
+});
+
+punitiveAdultBox.addEventListener("input", function () {
     if (copingMechanismsSelect.selectedIndex === 0) {
         appState.currentEvent.punitiveAdult = this.value;
     } else {
         appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex - 1].punitiveAdult = this.value;
     }
-    saveState();
+    localStore.saveCurrentEventToLocalStorage();
 });
 
 // punitiveAdult.addEventListener('mousedown', function () {
@@ -44,36 +72,55 @@ punitiveAdult.addEventListener("input", function () {
 //     }
 // });
 
-healthyAdultOnPunitiveAdult.addEventListener("input", function () {
-    appState.currentEvent.healthyAdultOnPunitiveAdult = this.value;
-    saveState();
+
+// row 3 ===========================
+healthyAdultOnVulnerableChildBox.addEventListener("input", function () {
+    appState.currentEvent.healthyAdultOnVulnerableChild = this.value;
+    localStore.saveCurrentEventToLocalStorage();
 });
 
-vulnerableChild.addEventListener("input", function () {
+vulnerableChildBox.addEventListener("input", function () {
     appState.currentEvent.vulnerableChild = this.value;
-    saveState();
+    localStore.saveCurrentEventToLocalStorage();
 });
 
-healthyAdultOnVulnerableChild.addEventListener("input", function () {
-    appState.currentEvent.healthyAdultOnVulnerableChild = this.value;
-    saveState();
-});
-
-healthyAdultOnVulnerableChild.addEventListener("input", function () {
-    appState.currentEvent.healthyAdultOnVulnerableChild = this.value;
-    saveState();
-
-});
-
-healthyAdultOnCopingMechanism.addEventListener("input", function () {
+// row 4 ===========================
+healthyAdultOnCopingMechanismBox.addEventListener("input", function () {
     appState.currentEvent.healthyAdultOnCopingMechanism = this.value;
-    saveState();
+    localStore.saveCurrentEventToLocalStorage();
 });
 
-copingMechanismOptionInsert.addEventListener("keydown", (event) => {
+copingMechanismBox.addEventListener("input", function () {
+    appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex - 1].voice = this.value;
+    localStore.saveCurrentEventToLocalStorage();
+});
+
+// row 5 ===========================
+copingMechanismsSelect.addEventListener('change', function () {
+    if (this.selectedIndex > 0) {
+        // set what is displayed in the mechanism voice
+        let txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].voice;
+        txt = txt ? txt : "";
+        copingMechanismBox.value = txt;
+        // set what is displayed in the punitive adult card
+        // txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].punitiveAdult;
+        // txt = txt ? txt : "";
+        // punitiveAdult.value = txt;
+        copingMechanismBox.disabled = false;
+    } else {
+        // set what is displayed in the mechanism voice
+        copingMechanismBox.value = "";
+        // set what is displayed in the punitive adult card
+        // let txt = appState.currentEvent.punitiveAdult;
+        // punitiveAdult.value = txt ? txt : "";
+        copingMechanismBox.disabled = true;
+    }
+});
+
+newCopingMechanismBox.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         event.preventDefault(); // prevent accidental form submit behavior if any
-        const inputValue = copingMechanismOptionInsert.value.trim();
+        const inputValue = newCopingMechanismBox.value.trim();
         if (inputValue) {
             const values = Array.from(copingMechanismsSelect.options).map(option => option.value);
             const exists = values.some(val => val === inputValue);
@@ -85,18 +132,18 @@ copingMechanismOptionInsert.addEventListener("keydown", (event) => {
             newOption.text = inputValue;
             newOption.value = inputValue;
             copingMechanismsSelect.appendChild(newOption);
-            copingMechanismOptionInsert.value = ""; // clear input
+            newCopingMechanismBox.value = ""; // clear input
             copingMechanismsSelect.selectedIndex = copingMechanismsSelect.selectedIndex + 1;
             // update state
             const copingMechanism = new CopingMechanism(inputValue);
             appState.currentEvent.copingMechanisms.push(copingMechanism);
             copingMechanismsSelect.dispatchEvent(new Event('change'));
-            saveState();
+            localStore.saveCurrentEventToLocalStorage();
         }
     }
 });
 
-copingMechanismOptionDelete.addEventListener("click", () => {
+copingMechanismDeleteBT.addEventListener("click", () => {
     const selectedIndex = copingMechanismsSelect.selectedIndex;
 
     if (selectedIndex > 0) {
@@ -104,98 +151,61 @@ copingMechanismOptionDelete.addEventListener("click", () => {
             copingMechanismsSelect.remove(selectedIndex);
             appState.currentEvent.copingMechanisms.splice(selectedIndex - 1, 1);
             copingMechanismsSelect.dispatchEvent(new Event('change'));
-            saveState();
+            localStore.saveCurrentEventToLocalStorage();
         }
     } else {
         alert("No mechanism selected to delete.");
     }
 });
 
-copingMechanismsSelect.addEventListener('change', function () {
-    if (this.selectedIndex > 0) {
-        // set what is displayed in the mechanism voice
-        let txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].voice;
-        txt = txt ? txt : "";
-        copingMechanism.value = txt;
-        // set what is displayed in the punitive adult card
-        // txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].punitiveAdult;
-        // txt = txt ? txt : "";
-        // punitiveAdult.value = txt;
-        copingMechanism.disabled = false;
-    } else {
-        // set what is displayed in the mechanism voice
-        copingMechanism.value = "";
-        // set what is displayed in the punitive adult card
-        // let txt = appState.currentEvent.punitiveAdult;
-        // punitiveAdult.value = txt ? txt : "";
-        copingMechanism.disabled = true;
-    }
+// buttons area ===========================
+clearEventBT.addEventListener('click', function () {
+    clearCurrentEvent();
 });
 
-copingMechanism.addEventListener("input", function () {
-    appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex - 1].voice = this.value;
-    saveState();
-});
-
-function saveState() {
-    let str = JSON.stringify(appState.currentEvent);
-    // console.log(str);
-    localStorage.setItem('currentEvent', str);
-}
-
-function clearState() {
-    localStorage.removeItem('currentEvent')
-    let arr = [situation, punitiveAdult, vulnerableChild, healthyAdultOnSituation,
-        healthyAdultOnPunitiveAdult, healthyAdultOnVulnerableChild, healthyAdultOnCopingMechanism
-    ]
-    arr.forEach(e => e.value = '');
-    copingMechanismsSelect.innerHTML = '<option value="">-- None --</option>';
-
-}
-
-const btSaveState = document.getElementById('btSaveState');
-btSaveState.addEventListener('click', function () {
-    saveState();
-});
-
-const btClearState = document.getElementById('btClearState');
-btClearState.addEventListener('click', function () {
-    clearState();
+archiveEventBT.addEventListener('click', function () {
+    appState.currentEvent.title = prompt("Enter Event Title");
+    // add the current event to the events array in app
+    appState.archivedEvents.push(appState.currentEvent);
+    // clear the current event
+    clearCurrentEvent();
+    // update the local storage
+    localStore.saveArchivedEventsToLocalStorage();
+    // clear the table
+    updateUI.clearArchivedEventsTable();
+    // build the table elements and set the eventsTableBody
+    updateUI.renderArchivedEventsTable();
 });
 
 
+
+
+function showSituationDetails(sit) { }
+function deleteSituation(sit) { }
+
+// ON PAGE LOAD
 window.addEventListener("load", () => {
-    let currentEventJSON = localStorage.getItem('currentEvent');
-
-    if (currentEventJSON) {
-        /** @type {Event} */
-        let ev = JSON.parse(currentEventJSON);
-        appState.currentEvent.situation = ev.situation;
-        appState.currentEvent.punitiveAdult = ev.punitiveAdult;
-        appState.currentEvent.vulnerableChild = ev.vulnerableChild;
-        appState.currentEvent.copingMechanisms = ev.copingMechanisms;
-        appState.currentEvent.healthyAdultOnSituation = ev.healthyAdultOnSituation;
-        appState.currentEvent.healthyAdultOnPunitiveAdult = ev.healthyAdultOnPunitiveAdult;
-        appState.currentEvent.healthyAdultOnVulnerableChild = ev.healthyAdultOnVulnerableChild;
-        appState.currentEvent.healthyAdultOnCopingMechanism = ev.healthyAdultOnCopingMechanism;
-        loadState();
+    if (localStore.loadEventFromLocalStorage()) {
+        renderEvent.renderUIfromAppState();
     }
+
+    if (localStore.loadArchivedEventsFromLocalStorage()) {
+        // to do - render the table in UI
+        updateUI.renderArchivedEventsTable();
+    }
+
 });
 
-function loadState() {
-    situation.value = appState.currentEvent.situation;
-    punitiveAdult.value = appState.currentEvent.punitiveAdult;
-    vulnerableChild.value = appState.currentEvent.vulnerableChild;
-    healthyAdultOnSituation.value = appState.currentEvent.healthyAdultOnSituation;
-    healthyAdultOnPunitiveAdult.value = appState.currentEvent.healthyAdultOnPunitiveAdult;
-    healthyAdultOnVulnerableChild.value = appState.currentEvent.healthyAdultOnVulnerableChild;
-    healthyAdultOnCopingMechanism.value = appState.currentEvent.healthyAdultOnCopingMechanism;
+// helper functions
 
-    appState.currentEvent.copingMechanisms.forEach(m => {
-        const newOption = document.createElement("option");
-        newOption.text = m.title;
-        newOption.value = m.title;
-        copingMechanismsSelect.appendChild(newOption);
-    });
-
+/**clears the current event from local storage and from the UI */
+function clearCurrentEvent() {
+    localStore.removeCurrentEventFromLocalStorage();
+    appState.createNewEvent();
+    updateUI.clearSituationForm();
 }
+
+
+
+
+

@@ -1,6 +1,9 @@
+// Core classes: Event, CopingMechanism
+
 export class Event{
 
     constructor(){
+        
         this.situation = "";
         this.punitiveAdult = "";
         this.vulnerableChild = "";
@@ -11,6 +14,9 @@ export class Event{
         this.healthyAdultOnPunitiveAdult = '';
         this.healthyAdultOnVulnerableChild = '';
         this.healthyAdultOnCopingMechanism = '';
+
+        this.title = '';
+        this.time = new Date().toLocaleString();
     }
 
 

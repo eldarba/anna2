@@ -88,3 +88,34 @@ label {
     padding: 0;
     border: 0.8px;
 }
+
+.archive-container{
+    border: 1px solid;
+    width: 100%;
+    background-color: paleturquoise;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 7px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+table{
+    text-align: center;
+}
+
+tr,td{
+    font-size: small;
+    font-weight: normal;
+}
+
+tr, td,th, table{
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+#copingMechanismDeleteBT{
+    color: red;
+}

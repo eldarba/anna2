@@ -16,48 +16,48 @@
                 <div class="col">
                     <label class="green-lbl" for="healthyAdultOnSituation">Healthy Adult</label>
                     <br>
-                    <textarea id="healthyAdultOnSituation" class="healthy"></textarea>
+                    <textarea id="healthyAdultOnSituationBox" class="healthy"></textarea>
                 </div>
                 <div class="col">
                     <label for="situation">Situation</label>
                     <br>
-                    <textarea id="situation"></textarea>
+                    <textarea id="situationBox"></textarea>
                 </div>
             </div>
             <div class="row" id="row2">
                 <div class="col">
                     <label class="green-lbl" for="healthyAdultOnPunitiveAdult">Healthy Adult</label>
                     <br>
-                    <textarea id="healthyAdultOnPunitiveAdult" class="healthy"></textarea>
+                    <textarea id="healthyAdultOnPunitiveAdultBox" class="healthy"></textarea>
                 </div>
                 <div class="col">
                     <label class="red-lbl" for="punitiveAdult">Punitive Adult</label>
                     <br>
-                    <textarea id="punitiveAdult" class="unhealthy"></textarea>
+                    <textarea id="punitiveAdultBox" class="unhealthy"></textarea>
                 </div>
             </div>
             <div class="row" id="row3">
                 <div class="col">
                     <label class="green-lbl" for="healthyAdultOnVulnerableChild">Healthy Adult</label>
                     <br>
-                    <textarea id="healthyAdultOnVulnerableChild" class="healthy"></textarea>
+                    <textarea id="healthyAdultOnVulnerableChildBox" class="healthy"></textarea>
                 </div>
                 <div class="col">
                     <label class="blue-lbl" for="vulnerableChild">Vulnerable Child</label>
                     <br>
-                    <textarea id="vulnerableChild" class="child"></textarea>
+                    <textarea id="vulnerableChildBox" class="child"></textarea>
                 </div>
             </div>
             <div class="row" id="row4">
                 <div class="col">
                     <label class="green-lbl" for="healthyAdultOnCopingMechanism">Healthy Adult</label>
                     <br>
-                    <textarea id="healthyAdultOnCopingMechanism" class="healthy"></textarea>
+                    <textarea id="healthyAdultOnCopingMechanismBox" class="healthy"></textarea>
                 </div>
                 <div class="col">
                     <label for="copingMechanism">Coping Mechanism</label>
                     <br>
-                    <textarea id="copingMechanism" disabled class="unhealthy"></textarea>
+                    <textarea id="copingMechanismBox" disabled class="unhealthy"></textarea>
                 </div>
                 
             </div>
@@ -69,17 +69,37 @@
                     </select>
                     <br>
                     <br>
-                    <input class="full-width" id="copingMechanismOptionInsert" type="text" placeholder="New Coping Mechanism">
+                    <input class="full-width" id="newCopingMechanismBox" type="text" placeholder="Enter New Coping Mechanism">
                     <br>
                     <br>
-                    <button class="full-width" id="copingMechanismOptionDelete">delete current mechanism</button>
+                    <button class="full-width" id="copingMechanismDeleteBT">delete current mechanism</button>
 
                 </div>
             </div>
         </div>
+
+        <!-- buttons area -->
+        <div>
+            <button id="clearEventBT">Clear this Event</button>
+            <button id="archiveEventBT">Save this Event to Archive</button>
+        </div>
+
+        <div class="archive-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>title</th>
+                        <th>time</th>
+                        <th>Display</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyArchivedEvents">
+                    
+                </tbody>
+            </table>
+        </div>
     </div>
-    <button id="btSaveState">Save State</button>
-    <button id="btClearState">Clear State</button>
 </body>
 
 </html>
