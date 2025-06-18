@@ -122,6 +122,6 @@ tr, td,th, table{
 #up-image{
     width: 25px;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 20px;
+    left: 10px;
 }
