@@ -36,11 +36,13 @@ export function renderArchivedEventsTable() {
 
         const tdBtShow = document.createElement("td");
         const btShow = document.createElement("button");
+        btShow.classList ='btn btn-primary';
         btShow.innerHTML = "Show";
         tdBtShow.append(btShow);
 
         const tdBtDel = document.createElement("td");
         const btDel = document.createElement("button");
+        btDel.classList = 'btn btn-danger';
         btDel.innerHTML = "x";
         tdBtDel.append(btDel);
 

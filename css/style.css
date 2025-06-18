@@ -73,9 +73,6 @@ textarea.healthy {
     border-color: blue;
 }
 
-#copingMechanismOptionDelete {
-    color: red;
-}
 
 label {
     font-size: medium;
@@ -116,10 +113,6 @@ tr,td{
 tr, td,th, table{
     border: 1px solid;
     border-collapse: collapse;
-}
-
-#copingMechanismDeleteBT{
-    color: red;
 }
 
 #copingMechanismsSelect{
