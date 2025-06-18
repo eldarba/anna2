@@ -1,19 +1,19 @@
 html,
 body {
-    font-family: sans-serif;
-    font-weight: bold;
+    /* font-family: sans-serif;
+    font-weight: bold; */
     background-color: black;
     height: 150%;
 }
 
 #container {
-    width: 98%;
-    margin: auto;
+    /* width: 98%; */
+    /* margin: auto; */
 }
 
 
 .row {
-    border: 1px solid;
+    /* border: 1px solid; */
     width: 100%;
     background-color: palegoldenrod;
     border-radius: 5px;
@@ -26,8 +26,8 @@ body {
 }
 
 .col {
-    width: 100%;
-    flex-shrink: 1;
+    /* width: 100%;
+    flex-shrink: 1; */
 }
 
 
@@ -36,7 +36,7 @@ textarea {
     height: 20vh;
     direction: auto;
     unicode-bidi: plaintext;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     border: 5px solid;
     box-sizing: border-box;
     border-radius: 5px;
@@ -75,37 +75,37 @@ textarea.healthy {
 
 
 label {
-    font-size: medium;
+    /* font-size: medium;
     display: inline-block;
-    width: 100%;
+    width: 100%; */
 }
 
 .full-width{
     width: 100%;
-    padding: 0;
+    /* padding: 0;
     border: 0.8px;
     padding: 5px;
-    box-sizing: border-box;
+    box-sizing: border-box; */
 }
 
-.archive-container{
-    border: 1px solid;
-    width: 100%;
-    background-color: paleturquoise;
-    border-radius: 5px;
-    padding: 5px;
-    margin-bottom: 7px;
+/* .archive-container{ */
+    /* border: 1px solid; */
+    /* width: 100%; */
+    /* background-color: paleturquoise; */
+    /* border-radius: 5px; */
+    /* padding: 5px; */
+    /* margin-bottom: 7px; */
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
+    /* display: flex; */
+    /* flex-direction: column;
+    justify-content: space-around; */
+/* } */
 
-table{
-    text-align: center;
-}
+/* table{ */
+    /* text-align: center; */
+/* } */
 
-tr,td{
+/* tr,td{
     font-size: small;
     font-weight: normal;
 }
@@ -113,8 +113,8 @@ tr,td{
 tr, td,th, table{
     border: 1px solid;
     border-collapse: collapse;
-}
+} */
 
-#copingMechanismsSelect{
+/* #copingMechanismsSelect{
     height: fit-content;
-}
+} */
