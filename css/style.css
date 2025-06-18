@@ -87,6 +87,8 @@ label {
     width: 100%;
     padding: 0;
     border: 0.8px;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 .archive-container{
@@ -118,4 +120,8 @@ tr, td,th, table{
 
 #copingMechanismDeleteBT{
     color: red;
+}
+
+#copingMechanismsSelect{
+    height: fit-content;
 }

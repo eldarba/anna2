@@ -4,7 +4,8 @@ import appState from "./models/AppState.js";
 import { CopingMechanism } from "./logic/AppLogic.js";
 import * as localStore from "./storage/localStore.js";
 import * as updateUI from "./ui/updateUI.js";
-import * as renderEvent from "./ui/renderEvent.js"
+import * as renderEvent from "./ui/renderEvent.js";
+import * as helpers from "./utils/helpers.js";
 // import { Event as AppEvent } from "./logic/AppLogic.js";
 
 // DOM ELEMENTS =============================
@@ -56,10 +57,13 @@ healthyAdultOnPunitiveAdultBox.addEventListener("input", function () {
 });
 
 punitiveAdultBox.addEventListener("input", function () {
-    if (copingMechanismsSelect.selectedIndex === 0) {
+    
+    // if (copingMechanismsSelect.selectedIndex === 0) {
+    if (copingMechanismsSelect.selectedIndex === -1) {
         appState.currentEvent.punitiveAdult = this.value;
     } else {
-        appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex - 1].punitiveAdult = this.value;
+        // appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex - 1].punitiveAdult = this.value;
+        appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex].punitiveAdult = this.value;
     }
     localStore.saveCurrentEventToLocalStorage();
 });
@@ -91,15 +95,18 @@ healthyAdultOnCopingMechanismBox.addEventListener("input", function () {
 });
 
 copingMechanismBox.addEventListener("input", function () {
-    appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex - 1].voice = this.value;
+    // appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex - 1].voice = this.value;
+    appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex].voice = this.value;
     localStore.saveCurrentEventToLocalStorage();
 });
 
 // row 5 ===========================
 copingMechanismsSelect.addEventListener('change', function () {
-    if (this.selectedIndex > 0) {
+    // if (this.selectedIndex > 0) {
+    if (this.selectedIndex >= 0) {
         // set what is displayed in the mechanism voice
-        let txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].voice;
+        // let txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].voice;
+        let txt = appState.currentEvent.copingMechanisms[this.selectedIndex].voice;
         txt = txt ? txt : "";
         copingMechanismBox.value = txt;
         // set what is displayed in the punitive adult card
@@ -134,6 +141,8 @@ newCopingMechanismBox.addEventListener("keydown", (event) => {
             copingMechanismsSelect.appendChild(newOption);
             newCopingMechanismBox.value = ""; // clear input
             copingMechanismsSelect.selectedIndex = copingMechanismsSelect.selectedIndex + 1;
+            console.log(copingMechanismsSelect.selectedIndex);
+            
             // update state
             const copingMechanism = new CopingMechanism(inputValue);
             appState.currentEvent.copingMechanisms.push(copingMechanism);
@@ -164,11 +173,12 @@ clearEventBT.addEventListener('click', function () {
 });
 
 archiveEventBT.addEventListener('click', function () {
-    const eventTitle = prompt("Enter Event Title");
+    let eventTitle = prompt("Enter Event Title");
     if(!eventTitle){
         alert("You need to enter a title!");
         return;
     }
+    eventTitle = helpers.capitalizeFirst(eventTitle);
     appState.currentEvent.title = eventTitle;
     // add the current event to the events array in app
     appState.archivedEvents.push(appState.currentEvent);

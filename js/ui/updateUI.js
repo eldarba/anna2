@@ -12,7 +12,8 @@ export function clearSituationForm() {
     ui.copingMechanismBox
     ]
     arr.forEach(e => e.value = '');
-    ui.copingMechanismsSelect.innerHTML = '<option value="">-- None --</option>';
+    // ui.copingMechanismsSelect.innerHTML = '<option value="">-- None --</option>';
+    ui.copingMechanismsSelect.innerHTML = '';
     ui.copingMechanismBox.disabled = true;
 }
 
