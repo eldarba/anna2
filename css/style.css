@@ -118,3 +118,7 @@ tr, td,th, table{
 /* #copingMechanismsSelect{
     height: fit-content;
 } */
+
+#up-image{
+    width: 20px;
+}
