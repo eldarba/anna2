@@ -141,7 +141,7 @@ newCopingMechanismBox.addEventListener("keydown", (event) => {
             copingMechanismsSelect.appendChild(newOption);
             newCopingMechanismBox.value = ""; // clear input
             copingMechanismsSelect.selectedIndex = copingMechanismsSelect.selectedIndex + 1;
-            console.log(copingMechanismsSelect.selectedIndex);
+            copingMechanismBox.focus();
             
             // update state
             const copingMechanism = new CopingMechanism(inputValue);
