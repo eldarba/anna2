@@ -16,8 +16,8 @@ export class Event{
         this.healthyAdultOnCopingMechanism = '';
 
         this.title = '';
-        // this.time = new Date().toLocaleString();
-        this.time = new Date();
+        this.time = new Date().toLocaleString();
+        // this.time = new Date();
     }
 
 
