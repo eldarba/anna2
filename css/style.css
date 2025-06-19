@@ -73,6 +73,12 @@ textarea.healthy {
     border-color: blue;
 }
 
+.coping {
+    border: 5px solid;
+    box-sizing: border-box;
+    border-color: brown;
+}
+
 
 label {
     /* font-size: medium;
@@ -120,8 +126,8 @@ tr, td,th, table{
 } */
 
 #up-image{
-    width: 40px;
+    width: 30px;
     position: fixed;
-    top: 60%;
-    left: 47.9%;
+    bottom: 10%;
+    left: 733px;
 }
