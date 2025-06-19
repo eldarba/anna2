@@ -57,7 +57,7 @@ healthyAdultOnPunitiveAdultBox.addEventListener("input", function () {
 });
 
 punitiveAdultBox.addEventListener("input", function () {
-    
+
     // if (copingMechanismsSelect.selectedIndex === 0) {
     if (copingMechanismsSelect.selectedIndex === -1) {
         appState.currentEvent.punitiveAdult = this.value;
@@ -142,7 +142,7 @@ newCopingMechanismBox.addEventListener("keydown", (event) => {
             newCopingMechanismBox.value = ""; // clear input
             copingMechanismsSelect.selectedIndex = copingMechanismsSelect.selectedIndex + 1;
             copingMechanismBox.focus();
-            
+
             // update state
             const copingMechanism = new CopingMechanism(inputValue);
             appState.currentEvent.copingMechanisms.push(copingMechanism);
@@ -174,7 +174,7 @@ clearEventBT.addEventListener('click', function () {
 
 archiveEventBT.addEventListener('click', function () {
     let eventTitle = prompt("Enter Event Title");
-    if(!eventTitle){
+    if (!eventTitle) {
         alert("You need to enter a title!");
         return;
     }
@@ -220,5 +220,13 @@ function clearCurrentEvent() {
 
 
 
+const goUp = document.getElementById('goUp');
 
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+        goUp.style.display = 'block';
+    } else {
+        goUp.style.display = 'none';
+    }
+});
 
