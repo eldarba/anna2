@@ -120,8 +120,8 @@ tr, td,th, table{
 } */
 
 #up-image{
-    width: 25px;
+    width: 40px;
     position: fixed;
-    bottom: 20px;
-    left: 10px;
+    top: 60%;
+    left: 47.9%;
 }
