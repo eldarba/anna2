@@ -3,7 +3,7 @@ body {
     /* font-family: sans-serif;
     font-weight: bold; */
     background-color: black;
-    /* height: 150%; */
+    height: 140%;
 }
 
 #container {
@@ -130,4 +130,5 @@ tr, td,th, table{
     position: fixed;
     bottom: 20px;
     left: 20px;
+    /* display: none; */
 }
