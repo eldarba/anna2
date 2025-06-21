@@ -6,7 +6,6 @@ import * as localStore from "./storage/localStore.js";
 import * as updateUI from "./ui/updateUI.js";
 import * as renderEvent from "./ui/renderEvent.js";
 import * as helpers from "./utils/helpers.js";
-// import { Event as AppEvent } from "./logic/AppLogic.js";
 
 // DOM ELEMENTS =============================
 // row 1
@@ -27,9 +26,10 @@ export const healthyAdultOnCopingMechanismBox = document.getElementById('healthy
 export const copingMechanismBox = document.getElementById('copingMechanismBox');
 
 // row 5
+export const punitiveAdultOnMechanismBox = document.getElementById('punitiveAdultOnMechanismBox');
 export const copingMechanismsSelect = document.getElementById('copingMechanismsSelect');
 export const newCopingMechanismBox = document.getElementById('newCopingMechanismBox');
-const copingMechanismDeleteBT = document.getElementById("copingMechanismDeleteBT");
+export const copingMechanismDeleteBT = document.getElementById("copingMechanismDeleteBT");
 
 const clearEventBT = document.getElementById('clearEventBT');
 const archiveEventBT = document.getElementById('archiveEventBT');
@@ -90,64 +90,74 @@ vulnerableChildBox.addEventListener("input", function () {
 
 // row 4 ===========================
 healthyAdultOnCopingMechanismBox.addEventListener("input", function () {
-    appState.currentEvent.healthyAdultOnCopingMechanism = this.value;
+    appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex].healthyAdult = this.value;
     localStore.saveCurrentEventToLocalStorage();
 });
 
 copingMechanismBox.addEventListener("input", function () {
-    // appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex - 1].voice = this.value;
     appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex].voice = this.value;
     localStore.saveCurrentEventToLocalStorage();
 });
 
 // row 5 ===========================
+punitiveAdultOnMechanismBox.addEventListener('input', function () {
+    // update app state object
+    appState.currentEvent.copingMechanisms[copingMechanismsSelect.selectedIndex].punitiveAdult = this.value;
+    // update local storage
+    localStore.saveCurrentEventToLocalStorage();
+});
+
 copingMechanismsSelect.addEventListener('change', function () {
-    // if (this.selectedIndex > 0) {
     if (this.selectedIndex >= 0) {
+        // set what is displayed in the healthy voice
+        let txt = appState.currentEvent.copingMechanisms[this.selectedIndex].healthyAdult;
+        txt = txt ? txt : "";
+        healthyAdultOnCopingMechanismBox.value = txt;
+        healthyAdultOnCopingMechanismBox.disabled = false;
         // set what is displayed in the mechanism voice
-        // let txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].voice;
-        let txt = appState.currentEvent.copingMechanisms[this.selectedIndex].voice;
+        txt = appState.currentEvent.copingMechanisms[this.selectedIndex].voice;
         txt = txt ? txt : "";
         copingMechanismBox.value = txt;
-        // set what is displayed in the punitive adult card
-        // txt = appState.currentEvent.copingMechanisms[this.selectedIndex - 1].punitiveAdult;
-        // txt = txt ? txt : "";
-        // punitiveAdult.value = txt;
         copingMechanismBox.disabled = false;
-    } else {
-        // set what is displayed in the mechanism voice
-        copingMechanismBox.value = "";
         // set what is displayed in the punitive adult card
-        // let txt = appState.currentEvent.punitiveAdult;
-        // punitiveAdult.value = txt ? txt : "";
-        copingMechanismBox.disabled = true;
+        txt = appState.currentEvent.copingMechanisms[this.selectedIndex].punitiveAdult;
+        txt = txt ? txt : "";
+        punitiveAdultOnMechanismBox.value = txt;
+        punitiveAdultOnMechanismBox.disabled = false;
     }
 });
 
 newCopingMechanismBox.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         event.preventDefault(); // prevent accidental form submit behavior if any
-        const inputValue = newCopingMechanismBox.value.trim();
-        if (inputValue) {
+        const mechanismTitle = newCopingMechanismBox.value.trim();
+        if (mechanismTitle) {
             const values = Array.from(copingMechanismsSelect.options).map(option => option.value);
-            const exists = values.some(val => val === inputValue);
+            const exists = values.some(val => val === mechanismTitle);
             if (exists) {
-                alert("This Coping mechanism already exists!");
+                alert('Coping mechanism name "' + mechanismTitle  + "' already exists!");
                 return;
             }
-            const newOption = document.createElement("option");
-            newOption.text = inputValue;
-            newOption.value = inputValue;
-            copingMechanismsSelect.appendChild(newOption);
-            newCopingMechanismBox.value = ""; // clear input
-            copingMechanismsSelect.selectedIndex = copingMechanismsSelect.selectedIndex + 1;
-            copingMechanismBox.focus();
 
             // update state
-            const copingMechanism = new CopingMechanism(inputValue);
+            const copingMechanism = new CopingMechanism(mechanismTitle);
             appState.currentEvent.copingMechanisms.push(copingMechanism);
-            copingMechanismsSelect.dispatchEvent(new Event('change'));
             localStore.saveCurrentEventToLocalStorage();
+            renderEvent.renderUIfromAppState();
+
+
+            // const newOption = document.createElement("option");
+            // newOption.text = mechanismTitle;
+            // newOption.value = mechanismTitle;
+            // copingMechanismsSelect.appendChild(newOption);
+            newCopingMechanismBox.value = ""; // clear input
+            // copingMechanismsSelect.selectedIndex = copingMechanismsSelect.selectedIndex + 1;
+            copingMechanismsSelect.selectedIndex = appState.currentEvent.copingMechanisms.length - 1;
+            copingMechanismsSelect.dispatchEvent(new Event('change'));
+            copingMechanismBox.focus();
+
+        } else {
+            alert("Enter Coping Mechanism Title")
         }
     }
 });
@@ -155,11 +165,16 @@ newCopingMechanismBox.addEventListener("keydown", (event) => {
 copingMechanismDeleteBT.addEventListener("click", () => {
     const selectedIndex = copingMechanismsSelect.selectedIndex;
 
-    if (selectedIndex > 0) {
-        if (confirm("Delete this coping mechanism?")) {
-            copingMechanismsSelect.remove(selectedIndex);
-            appState.currentEvent.copingMechanisms.splice(selectedIndex - 1, 1);
-            copingMechanismsSelect.dispatchEvent(new Event('change'));
+    if (selectedIndex >= 0) {
+        if (confirm("OK to Delete coping mechanism " + copingMechanismsSelect.value + "?")) {
+            // remove the mechanism from the select UI ???
+            // copingMechanismsSelect.remove(selectedIndex);
+            // remove the mechanism object from app state
+            appState.currentEvent.copingMechanisms.splice(selectedIndex, 1);
+            renderEvent.renderUIfromAppState();
+            // emit change event to update the UI
+            // copingMechanismsSelect.dispatchEvent(new Event('change'));
+            // update the local storage
             localStore.saveCurrentEventToLocalStorage();
         }
     } else {
@@ -215,7 +230,8 @@ window.addEventListener("load", () => {
 function clearCurrentEvent() {
     localStore.removeCurrentEventFromLocalStorage();
     appState.createNewEvent();
-    updateUI.clearSituationForm();
+    // updateUI.clearSituationForm();
+    renderEvent.renderUIfromAppState();
 }
 
 

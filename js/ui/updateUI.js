@@ -9,7 +9,7 @@ import { renderUIfromAppState } from "./renderEvent.js";
 export function clearSituationForm() {
     let arr = [ui.situationBox, ui.punitiveAdultBox, ui.vulnerableChildBox, ui.healthyAdultOnSituationBox,
     ui.healthyAdultOnPunitiveAdultBox, ui.healthyAdultOnVulnerableChildBox, ui.healthyAdultOnCopingMechanismBox,
-    ui.copingMechanismBox
+    ui.copingMechanismBox, ui.punitiveAdultOnMechanismBox
     ]
     arr.forEach(e => e.value = '');
     // ui.copingMechanismsSelect.innerHTML = '<option value="">-- None --</option>';

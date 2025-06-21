@@ -2,6 +2,7 @@
 <html lang="en">
 
 <!-- punitive cards -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,72 +23,69 @@
             <div class="row" id="row1" class="container container-fluid">
                 <div class="col">
                     <label class="green-lbl" for="healthyAdultOnSituationBox">Healthy Adult</label>
-                    <br>
-                    <textarea id="healthyAdultOnSituationBox" class="healthy"></textarea>
+                    <textarea id="healthyAdultOnSituationBox" class="healthy" tabindex="7"></textarea>
                 </div>
                 <div class="col">
                     <label for="situationBox">Situation</label>
-                    <br>
-                    <textarea id="situationBox"></textarea>
+                    <textarea id="situationBox" tabindex="1"></textarea>
                 </div>
             </div>
+            <!-- row 2 punitive -->
             <div class="row" id="row2" class="container container-fluid">
                 <div class="col">
                     <label class="green-lbl" for="healthyAdultOnPunitiveAdultBox">Healthy Adult</label>
-                    <br>
-                    <textarea id="healthyAdultOnPunitiveAdultBox" class="healthy"></textarea>
+                    <textarea id="healthyAdultOnPunitiveAdultBox" class="healthy" tabindex="8"></textarea>
                 </div>
                 <div class="col">
                     <label class="red-lbl" for="punitiveAdultBox">Punitive Adult</label>
-                    <br>
-                    <textarea id="punitiveAdultBox" class="unhealthy"></textarea>
+                    <textarea id="punitiveAdultBox" class="punitive" tabindex="2"></textarea>
                 </div>
             </div>
+            <!-- row 3 vulnerable -->
             <div class="row" id="row3" class="container container-fluid">
                 <div class="col">
                     <label class="green-lbl" for="healthyAdultOnVulnerableChildBox">Healthy Adult</label>
-                    <br>
-                    <textarea id="healthyAdultOnVulnerableChildBox" class="healthy"></textarea>
+                    <textarea id="healthyAdultOnVulnerableChildBox" class="healthy" tabindex="9"></textarea>
                 </div>
                 <div class="col">
                     <label class="blue-lbl" for="vulnerableChild">Vulnerable Child</label>
-                    <br>
-                    <textarea id="vulnerableChildBox" class="child"></textarea>
+                    <textarea id="vulnerableChildBox" class="child" tabindex="3"></textarea>
                 </div>
             </div>
+
+            <!-- row 4 mechanisms -->
             <div class="row" id="row4" class="container container-fluid">
                 <div class="col">
-                    <label class="green-lbl" for="healthyAdultOnCopingMechanism">Healthy Adult</label>
-                    <br>
-                    <textarea id="healthyAdultOnCopingMechanismBox" class="healthy"></textarea>
+                    <label class="green-lbl" for="healthyAdultOnCopingMechanismBox">Healthy Adult on Coping</label>
+                    <textarea id="healthyAdultOnCopingMechanismBox" class="healthy" disabled tabindex="10"></textarea>
                 </div>
                 <div class="col">
-                    <label for="copingMechanismBox">Coping Mechanism</label>
-                    <br>
-                    <textarea id="copingMechanismBox" disabled class="coping"></textarea>
+                    <label for="copingMechanismBox" class="brown-lbl">Coping Mechanism</label>
+                    <textarea id="copingMechanismBox" disabled class="coping" tabindex="5"></textarea>
                 </div>
 
             </div>
-            <div class="row" id="row5" class="container container-fluid">
+            <!-- row 5 mechanisms select -->
+            <div id="row5" class="row">
 
-
-                <div class="col" style="font-weight: bolder;text-align: center;border: 1px solid;">
+                <!-- <div class="col" style="font-weight: bolder;text-align: center;border: 1px solid;">
                     <img src="./assests/images/add.jpeg" alt="Add" style="object-fit: contain;max-width: 100%;max-height: 150px;">
+                </div> -->
+                <div class="col">
+                    <label class="red-lbl" for="punitiveAdultBox">Punitive Adult on Coping</label>
+                    <textarea id="punitiveAdultOnMechanismBox" class="punitive" disabled tabindex="6"></textarea>
                 </div>
 
-
                 <div class="col">
-                    <select id="copingMechanismsSelect" class="form-select coping" size="3"
-                        aria-label="Size 3 select example"></select>
-                    <br>
-                    <input class="full-width coping" id="newCopingMechanismBox" type="text"
-                        placeholder="Enter New Coping Mechanism">
-                    <br>
-                    <br>
-                    <button class="btn btn-danger full-width coping" id="copingMechanismDeleteBT">Delete Current
+                    <label class="brown-lbl" for="punitiveAdultBox">Mechanism Choice</label>
+                    <select id="copingMechanismsSelect" class="form-select coping mb-1" size="3" disabled></select>
+                    <input class="full-width coping mb-1" id="newCopingMechanismBox" type="text"
+                        placeholder="Enter Mechanism Name"  tabindex="4">
+                    <button class="btn btn-danger full-width coping" id="copingMechanismDeleteBT" disabled>Delete Current
                         Mechanism</button>
                 </div>
             </div>
+
         </div>
         <!-- buttons area -->
         <div class="container container-fluid">

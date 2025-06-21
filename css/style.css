@@ -25,8 +25,11 @@ textarea.healthy {
 .blue-lbl {
     color: blue;
 }
+.brown-lbl {
+    color: brown;
+}
 
-.unhealthy:enabled {
+.punitive {
     border: 5px solid;
     box-sizing: border-box;
     border-color: red;
@@ -71,6 +74,7 @@ footer {
     justify-content: center;
     margin-top: 20px;
 }
+
 
 #footer-div {
     height: fit-content;

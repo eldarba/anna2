@@ -7,27 +7,26 @@ export class Event{
         this.situation = "";
         this.punitiveAdult = "";
         this.vulnerableChild = "";
-
+        /**@type {CopingMechanism[]} */
         this.copingMechanisms = [];
 
         this.healthyAdultOnSituation = '';
         this.healthyAdultOnPunitiveAdult = '';
         this.healthyAdultOnVulnerableChild = '';
-        this.healthyAdultOnCopingMechanism = '';
 
         this.title = '';
         this.time = new Date().toLocaleString();
-        // this.time = new Date();
     }
 
 
 }
 
 export class CopingMechanism{
-    constructor(title, voice, punitiveAdult){
+    constructor(title, voice='', punitiveAdult='', healthyAdult=''){
         this.title = title;
         this.voice = voice;
         this.punitiveAdult = punitiveAdult
+        this.healthyAdult = healthyAdult;
     }
 }
 
